@@ -1,0 +1,7 @@
+- [x] 1. Pick 'Modern minimal' direction and bind tokens to :root
+- [x] 2. Plan section list for the minimal landing page (Hero, simple features, footer)
+- [x] 3. Create index.html with base skeleton
+- [x] 4. Implement content and styling using OKLch tokens
+- [x] 5. Self-check: run checklist.md (mentally)
+- [x] 6. Critique: 5-dim radar (philosophy / hierarchy / execution / specificity / restraint)
+- [x] 7. Emit <artifact> for index.html
