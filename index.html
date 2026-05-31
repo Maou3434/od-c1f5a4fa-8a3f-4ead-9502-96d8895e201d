@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - Minimal Landing Page</title>
+    <style>
+        :root {
+            /* Modern Minimal Palette (OKLch) */
+            --bg:      oklch(99% 0.002 240);
+            --surface: oklch(100% 0 0);
+            --fg:      oklch(18% 0.012 250);
+            --muted:   oklch(54% 0.012 250);
+            --border:  oklch(92% 0.005 250);
+            --accent:  oklch(58% 0.18 255);
+
+            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+            
+            --max-width: 1100px;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            padding: 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--fg);
+        }
+
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 6rem;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            text-wrap: balance;
+        }
+
+        .cta {
+            display: inline-block;
+            background-color: var(--fg);
+            color: var(--bg);
+            padding: 0.9rem 2.2rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        /* Interaction Tweaks */
+        .tweaks-panel {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            font-size: 0.75rem;
+            z-index: 100;
+        }
+
+        .tweaks-panel h4 {
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.5;
+            font-weight: 700;
+        }
+
+        .tweak-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tweak-btn {
+            padding: 0.35rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            background: none;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.2s;
+        }
+
+        .tweak-btn:hover {
+            background: var(--bg);
+            color: var(--fg);
+            border-color: var(--muted);
+        }
+
+        @media (max-width: 768px) {
+            main { padding-top: 2rem; }
+            .hero { padding-bottom: 4rem; }
+            .features { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">OD.</div>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Showcase</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Hello World.</h1>
+            <p>A simple, minimal, and modern landing page prototype built with absolute focus and clarity.</p>
+            <a href="#" class="cta">Explore Design</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Clarity</h3>
+                <p>Designed with a focus on what matters most. No clutter, just the core essence of the brand.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Fluidity</h3>
+                <p>Lightning fast load times and responsive layouts. Optimized for every screen and device.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Modernity</h3>
+                <p>Leveraging next-gen web standards like OKLch and Container Queries for superior visual depth.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Personal Project. Crafted with Open Design.</p>
+    </footer>
+
+    <div class="tweaks-panel">
+        <h4>Theme Controls</h4>
+        <div class="tweak-group">
+            <button class="tweak-btn" onclick="document.documentElement.style.setProperty('--accent', 'oklch(58% 0.18 255)')">Blue</button>
+            <button class="tweak-btn" onclick="document.documentElement.style.setProperty('--accent', 'oklch(60% 0.15 150)')">Green</button>
+            <button class="tweak-btn" onclick="document.documentElement.style.setProperty('--accent', 'oklch(60% 0.2 20)')">Red</button>
+        </div>
+        <div class="tweak-group">
+            <button class="tweak-btn" style="flex: 1" onclick="setDarkMode(false)">Light</button>
+            <button class="tweak-btn" style="flex: 1" onclick="setDarkMode(true)">Dark</button>
+        </div>
+    </div>
+
+    <script>
+        const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+            "primaryColor": "oklch(58% 0.18 255)",
+            "darkMode": false
+        }/*EDITMODE-END*/;
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.documentElement.style.setProperty('--bg', 'oklch(15% 0.01 250)');
+                document.documentElement.style.setProperty('--surface', 'oklch(18% 0.01 250)');
+                document.documentElement.style.setProperty('--fg', 'oklch(95% 0.005 250)');
+                document.documentElement.style.setProperty('--muted', 'oklch(65% 0.01 250)');
+                document.documentElement.style.setProperty('--border', 'oklch(25% 0.02 250)');
+            } else {
+                document.documentElement.style.setProperty('--bg', 'oklch(99% 0.002 240)');
+                document.documentElement.style.setProperty('--surface', 'oklch(100% 0 0)');
+                document.documentElement.style.setProperty('--fg', 'oklch(18% 0.012 250)');
+                document.documentElement.style.setProperty('--muted', 'oklch(54% 0.012 250)');
+                document.documentElement.style.setProperty('--border', 'oklch(92% 0.005 250)');
+            }
+        }
+    </script>
+</body>
+</html>
